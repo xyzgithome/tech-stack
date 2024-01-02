@@ -20,15 +20,15 @@ public class A05 {
 
         // ⬇️GenericApplicationContext 是一个【干净】的容器
         GenericApplicationContext context = new GenericApplicationContext();
-        context.registerBean("config", Config.class);
-        context.registerBean(ConfigurationClassPostProcessor.class); // @ComponentScan @Bean @Import @ImportResource
-        context.registerBean(MapperScannerConfigurer.class, bd -> { // @MapperScanner
-            bd.getPropertyValues().add("basePackage", "com.tech.stack.spring.a05.mapper");
-        });
+//        context.registerBean("config", Config.class);
+//        context.registerBean(ConfigurationClassPostProcessor.class); // @ComponentScan @Bean @Import @ImportResource
+//        context.registerBean(MapperScannerConfigurer.class, bd -> { // @MapperScanner
+//            bd.getPropertyValues().add("basePackage", "com.tech.stack.spring.a05.mapper");
+//        });
 
-//        context.registerBean(ComponentScanPostProcessor.class); // 解析 @ComponentScan
-//        context.registerBean(AtBeanPostProcessor.class); // 解析 @Bean
-//        context.registerBean(MapperPostProcessor.class); // 解析 Mapper 接口
+        context.registerBean(ComponentScanPostProcessor.class); // 解析 @ComponentScan
+        context.registerBean(AtBeanPostProcessor.class); // 解析 @Bean
+        context.registerBean(MapperPostProcessor.class); // 解析 Mapper 接口
 
         // ⬇️初始化容器
         context.refresh();

@@ -36,6 +36,8 @@ public class Config {
         return dataSource;
     }
 
+    // 只能单个添加不能批量添加, 批量添加还是要扫描到@Mapper注解标注的接口然后批量注入
+    // 最后真正添加到spring容器的是MapperFactoryBean，而不是Mapper1
 //    @Bean
 //    public MapperFactoryBean<Mapper1> mapper1(SqlSessionFactory sqlSessionFactory) {
 //        MapperFactoryBean<Mapper1> factory = new MapperFactoryBean<>(Mapper1.class);
