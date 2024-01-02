@@ -23,7 +23,7 @@ public class A05 {
         context.registerBean("config", Config.class);
         context.registerBean(ConfigurationClassPostProcessor.class); // @ComponentScan @Bean @Import @ImportResource
         context.registerBean(MapperScannerConfigurer.class, bd -> { // @MapperScanner
-            bd.getPropertyValues().add("basePackage", "com.itheima.a05.mapper");
+            bd.getPropertyValues().add("basePackage", "com.tech.stack.spring.a05.mapper");
         });
 
 //        context.registerBean(ComponentScanPostProcessor.class); // 解析 @ComponentScan
