@@ -10,6 +10,17 @@ import org.springframework.context.support.GenericApplicationContext;
 /*
     Aware 接口及 InitializingBean 接口
  */
+
+/**
+ * @Autowired、@PostConstruct注解失效原因分析：
+ * 原因1：没有往spring容器中注册对应的BeanPostProcessor
+ *
+ * 原因2：注册了对应的BeanFactoryPostProcessor、BeanPostProcessor,
+ * 但是使用了错误的写法{@link MyConfig1}导致注解失效：
+ * Java 配置类包含 BeanFactoryPostProcessor 的情况，
+ * 因此要创建其中的 BeanFactoryPostProcessor 必须提前创建 Java 配置类，
+ * 而此时的 BeanPostProcessor 还未准备好，导致 @Autowired 等注解失效
+ */
 public class A06 {
     private static final Logger log = LoggerFactory.getLogger(A06.class);
 
