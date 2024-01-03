@@ -20,15 +20,14 @@ public class A06 {
                 b. BeanFactoryAware 注入 BeanFactory 容器
                 c. ApplicationContextAware 注入 ApplicationContext 容器
                 d. EmbeddedValueResolverAware 注入StringValueResolver 解析${}
-
          */
         GenericApplicationContext context = new GenericApplicationContext();
-        context.registerBean("myBean", MyBean.class);
-//        context.registerBean("myConfig1", MyConfig1.class);
+//        context.registerBean("myBean", MyBean.class);
+        context.registerBean("myConfig1", MyConfig1.class);
 //        context.registerBean("myConfig2", MyConfig2.class);
         context.registerBean(AutowiredAnnotationBeanPostProcessor.class);
         context.registerBean(CommonAnnotationBeanPostProcessor.class);
-//        context.registerBean(ConfigurationClassPostProcessor.class);
+        context.registerBean(ConfigurationClassPostProcessor.class);
 
         /*
             2. 有同学说: b、c、d 的功能用 @Autowired 就能实现啊, 为啥还要用 Aware 接口呢
