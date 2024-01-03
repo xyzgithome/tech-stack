@@ -30,13 +30,13 @@ public class MyBean implements BeanNameAware, ApplicationContextAware, Initializ
         log.debug("当前bean " + this + " 初始化");
     }
 
-//    @Autowired
-//    public void aaa(ApplicationContext applicationContext) {
-//        log.debug("当前bean " + this + " 使用@Autowired 容器是:" + applicationContext);
-//    }
-//
-//    @PostConstruct
-//    public void init() {
-//        log.debug("当前bean " + this + " 使用@PostConstruct 初始化");
-//    }
+    @Autowired
+    public void aaa(ApplicationContext applicationContext) {
+        log.debug("当前bean " + this + " 使用@Autowired 容器是:" + applicationContext);
+    }
+
+    @PostConstruct
+    public void init() {
+        log.debug("当前bean " + this + " 使用@PostConstruct 初始化");
+    }
 }

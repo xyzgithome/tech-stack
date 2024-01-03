@@ -26,8 +26,8 @@ public class A06 {
         context.registerBean("myBean", MyBean.class);
 //        context.registerBean("myConfig1", MyConfig1.class);
 //        context.registerBean("myConfig2", MyConfig2.class);
-//        context.registerBean(AutowiredAnnotationBeanPostProcessor.class);
-//        context.registerBean(CommonAnnotationBeanPostProcessor.class);
+        context.registerBean(AutowiredAnnotationBeanPostProcessor.class);
+        context.registerBean(CommonAnnotationBeanPostProcessor.class);
 //        context.registerBean(ConfigurationClassPostProcessor.class);
 
         /*
@@ -38,6 +38,9 @@ public class A06 {
             某些情况下, 扩展功能会失效, 而内置功能不会失效
 
             例1: 你会发现用 Aware 注入 ApplicationContext 成功, 而 @Autowired 注入 ApplicationContext 失败
+            原因在于没有往容器中注册AutowiredAnnotationBeanPostProcessor，注册后才能生效
+            例1: 你会发现用 InitializeBean 注入 初始化 成功, 而加了 @PostConstruct 的方法初始化 失败
+            原因在于没有往容器中注册CommonAnnotationBeanPostProcessor，注册后才能生效
          */
 
         /*
